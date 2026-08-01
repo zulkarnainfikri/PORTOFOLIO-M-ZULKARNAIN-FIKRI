@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Zulkarnain Fikri - Portfolio</title>
+    <meta name="description" content="Portfolio of Muhammad Zulkarnain Fikri, Legal Professional and Administrator.">
+    <meta name="keywords" content="Legal, Administrator, Law, Portofolio, Zulkarnain Fikri">
+    
+    <!-- Open Graph for Social Media -->
+    <meta property="og:title" content="Muhammad Zulkarnain Fikri - Legal Professional">
+    <meta property="og:description" content="Explore the professional portfolio of Muhammad Zulkarnain Fikri.">
+    <meta property="og:image" content="https://placehold.co/1200x630/0f172a/ffffff?text=Portfolio+MZ+Fikri">
+    <meta property="og:url" content="https://yourwebsite.com">
+
+    <!-- Fonts: Inter & Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        navy: {
+                            50: '#f0f4f8',
+                            100: '#d9e2ec',
+                            500: '#334e68',
+                            800: '#102a43',
+                            900: '#0a192f', // Darker navy for dark mode
+                        },
+                        gold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        },
+                        lightgray: '#f8fafc',
+                    },
+                    animation: {
+                        'float': 'float 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS for specialized effects -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+        }
+
+        .dark body {
+            background-color: #0f172a;
+            color: #cbd5e1;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .dark .glass {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #1e293b; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        .dark ::-webkit-scrollbar-thumb {
+            background: #475569; 
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+        
+        /* Scroll Progress */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: linear-gradient(to right, #fbbf24, #d97706);
+            z-index: 100;
+            transition: width 0.1s ease;
+        }
+
+        /* Loading Screen */
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: #ffffff;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+        }
+        .dark #loader {
+            background: #0f172a;
+        }
+        .loader-circle {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #f59e0b;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Reveal Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Ripple Effect */
+        .ripple {
+            position: relative;
+            overflow: hidden;
+        }
+        .ripple::after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+            background-repeat: no-repeat;
+            background-position: 50%;
+            transform: scale(10, 10);
+            opacity: 0;
+            transition: transform .5s, opacity 1s;
+        }
+        .ripple:active::after {
+            transform: scale(0, 0);
+            opacity: .3;
+            transition: 0s;
+        }
+
+        /* Gradient Text */
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #102a43, #f59e0b);
+        }
+        .dark .text-gradient {
+            background-image: linear-gradient(to right, #f8fafc, #fbbf24);
+        }
+        
+        /* Timeline specific */
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            left: 15px; /* Center under the circle */
+            top: 30px; /* Start below the first circle */
+            bottom: -30px; /* Extend slightly below the last item */
+            width: 2px;
+            background-color: #e2e8f0;
+            z-index: -1;
+        }
+        .dark .timeline-line::before {
+            background-color: #334155;
+        }
+        @media (min-width: 768px) {
+            .timeline-line::before {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Loading Screen -->
+    <div id="loader">
+        <div class="loader-circle"></div>
+    </div>
+
+    <!-- Scroll Progress -->
+    <div id="scroll-progress"></div>
+
+    <!-- Navbar -->
+    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 glass shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="font-heading font-bold text-2xl tracking-tighter text-navy-800 dark:text-white">
+                        MZF<span class="text-gold-500">.</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-sm font-medium text-slate-600 hover:text-gold-500 dark:text-slate-300 dark:hover:text-gold-400 transition">Home</a>
+                    <a href="#about" class="nav-link text-sm font-medium text-slate-600 hover:text-gold-500 dark:text-slate-300 dark:hover:text-gold-400 transition">About</a>
+                    <a href="#experience" class="nav-link text-sm font-medium text-slate-600 hover:text-gold-500 dark:text-slate-300 dark:hover:text-gold-400 transition">Experience</a>
+                    <a href="#projects" class="nav-link text-sm font-medium text-slate-600 hover:text-gold-500 dark:text-slate-300 dark:hover:text-gold-400 transition">Projects</a>
+                    <a href="#skills" class="nav-link text-sm font-medium text-slate-600 hover:text-gold-500 dark:text-slate-300 dark:hover:text-gold-400 transition">Skills</a>
+                </nav>
+
+                <!-- Actions -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <!-- Dark Mode Toggle -->
+                    <button id="theme-toggle" class="p-2 rounded-full text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800 transition focus:outline-none">
+                        <i id="theme-icon" class="fas fa-moon text-lg"></i>
+                    </button>
+                    <!-- Download CV Button -->
+                    <a href="#" onclick="downloadCV(event)" class="ripple bg-navy-800 hover:bg-navy-900 text-white dark:bg-gold-500 dark:hover:bg-gold-600 dark:text-navy-900 px-5 py-2.5 rounded-lg text-sm font-medium transition shadow-md flex items-center gap-2">
+                        <span>Resume</span>
+                        <i class="fas fa-download text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center gap-4">
+                    <button id="theme-toggle-mobile" class="p-2 text-slate-500 dark:text-slate-400">
+                        <i id="theme-icon-mobile" class="fas fa-moon"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-slate-600 dark:text-slate-300 hover:text-gold-500 focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-navy-900 border-t border-slate-100 dark:border-slate-800 shadow-lg absolute w-full left-0">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#home" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800">Home</a>
+                <a href="#about" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800">About</a>
+                <a href="#experience" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800">Experience</a>
+                <a href="#projects" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800">Projects</a>
+                <a href="#skills" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800">Skills</a>
+                <a href="#gallery" class="mobile-nav-link block px-3 py-3 rounded-md text-base font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800">Gallery</a>
+                <div class="pt-4 pb-2 px-3">
+                    <a href="#" onclick="downloadCV(event)" class="w-full flex justify-center items-center gap-2 bg-navy-800 dark:bg-gold-500 text-white dark:text-navy-900 px-4 py-3 rounded-lg font-medium">
+                        Download CV <i class="fas fa-download"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 md:pt-48 md:pb-32 relative overflow-hidden flex items-center min-h-[90vh]">
+        <!-- Background Elements -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-gold-400/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-navy-500/10 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+                <!-- Text Content -->
+                <div class="w-full md:w-3/5 text-center md:text-left reveal">
+                    <div class="inline-block px-4 py-1.5 rounded-full bg-navy-50 dark:bg-navy-800 text-navy-800 dark:text-gold-400 text-sm font-semibold mb-6 border border-navy-100 dark:border-navy-700">
+                        <span class="flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-gold-500 animate-pulse"></span>
+                            Available for Work
+                        </span>
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-bold leading-tight mb-4 text-slate-900 dark:text-white">
+                        Hello, I'm <br>
+                        <span class="text-gradient">Muhammad Zulkarnain Fikri</span>
+                    </h1>
+                    <h2 class="text-xl sm:text-2xl font-medium text-slate-600 dark:text-slate-300 mb-6 h-8" id="typewriter-text">
+                        <!-- Typewriter effect will go here -->
+                    </h2>
+                    <p class="text-base sm:text-lg text-slate-500 dark:text-slate-400 mb-8 max-w-2xl mx-auto md:mx-0 leading-relaxed">
+                        Lulusan Sarjana Hukum dengan fokus pada administrasi legal, pelayanan publik, dan analisis dokumen hukum. Berdedikasi untuk memberikan solusi hukum yang presisi dan administratif yang efisien.
+                    </p>
+                    <div class="flex flex-wrap items-center justify-center md:justify-start gap-4">
+                        <a href="#contact" class="ripple bg-navy-800 hover:bg-navy-900 text-white dark:bg-gold-500 dark:hover:bg-gold-600 dark:text-navy-900 px-6 py-3 rounded-lg font-medium transition shadow-lg shadow-navy-500/30 dark:shadow-gold-500/20">
+                            Contact Me
+                        </a>
+                        <a href="https://www.linkedin.com/in/m-zulkarnain-fikri" target="_blank" class="ripple bg-white dark:bg-navy-800 hover:bg-slate-50 dark:hover:bg-navy-700 text-navy-800 dark:text-white border border-slate-200 dark:border-slate-700 px-6 py-3 rounded-lg font-medium transition flex items-center gap-2 shadow-sm">
+                            <i class="fab fa-linkedin text-[#0A66C2]"></i> LinkedIn
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Image/Avatar -->
+                <div class="w-full md:w-2/5 flex justify-center relative reveal">
+                    <!-- Decorative circle behind image -->
+                    <div class="absolute inset-0 bg-gradient-to-tr from-navy-100 to-gold-50 dark:from-navy-800 dark:to-navy-900 rounded-full transform -rotate-6 scale-105 animate-float z-0"></div>
+                    
+                    <div class="relative z-10 w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-white dark:border-navy-800 shadow-2xl group">
+                        <!-- Updated professional photo -->
+                        <img src="file_0000000050c881f8849734bc74be4e8a.png" alt="Muhammad Zulkarnain Fikri" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-navy-900/20 group-hover:bg-transparent transition duration-300"></div>
+                    </div>
+                    
+                    <!-- Floating badge -->
+                    <div class="absolute -bottom-6 -right-6 md:bottom-10 md:-left-10 bg-white dark:bg-navy-800 p-4 rounded-xl shadow-xl border border-slate-100 dark:border-slate-700 z-20 flex items-center gap-3 animate-float" style="animation-delay: 1s;">
+                        <div class="w-12 h-12 rounded-full bg-gold-100 dark:bg-gold-900/30 flex items-center justify-center text-gold-600 dark:text-gold-400">
+                            <i class="fas fa-balance-scale text-xl"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-slate-800 dark:text-white">S.H.</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400">Legal Focus</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white dark:bg-navy-900 border-y border-slate-100 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-sm font-bold text-gold-500 tracking-wider uppercase mb-2">Kenali Saya</h2>
+                <h3 class="text-3xl md:text-4xl font-heading font-bold text-slate-900 dark:text-white">About Me</h3>
+                <div class="w-20 h-1 bg-navy-800 dark:bg-gold-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 reveal">
+                    <h4 class="text-2xl font-heading font-semibold text-slate-800 dark:text-slate-100">
+                        Profesional Hukum dengan Minat pada Administrasi & Pelayanan
+                    </h4>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-justify">
+                        Saya adalah Lulusan Sarjana Hukum dari Universitas Islam Negeri Kiai Haji Achmad Siddiq Jember (IPK 3.50). Memiliki ketertarikan mendalam dalam analisis dokumen hukum, penyelesaian masalah administratif, serta pelayanan publik.
+                    </p>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-justify">
+                        Selama masa studi dan magang, saya telah mengembangkan kemampuan berpikir analitis, kepemimpinan, dan komunikasi yang efektif. Saya terbiasa bekerja baik secara mandiri maupun dalam tim untuk mencapai target yang ditetapkan. Saya memegang teguh nilai integritas, ketelitian, dan dedikasi dalam setiap pekerjaan yang saya lakukan.
+                    </p>
+                    <div class="pt-4 flex gap-4">
+                        <div class="flex flex-col">
+                            <span class="text-sm text-slate-500 dark:text-slate-400">Pendidikan</span>
+                            <span class="font-medium text-slate-900 dark:text-white">S1 Hukum Pidana Islam</span>
+                        </div>
+                        <div class="w-px h-10 bg-slate-200 dark:bg-slate-700"></div>
+                        <div class="flex flex-col">
+                            <span class="text-sm text-slate-500 dark:text-slate-400">Lokasi</span>
+                            <span class="font-medium text-slate-900 dark:text-white">Jember, Jawa Timur</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 reveal" style="transition-delay: 200ms;">
+                    <!-- Stat Card 1 -->
+                    <div class="bg-slate-50 dark:bg-navy-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-700 hover:shadow-lg transition duration-300 group">
+                        <i class="fas fa-briefcase text-3xl text-navy-500 dark:text-gold-400 mb-4 group-hover:scale-110 transition"></i>
+                        <div class="text-3xl font-bold text-slate-900 dark:text-white mb-1"><span class="counter" data-target="3">0</span>+</div>
+                        <div class="text-sm text-slate-500 dark:text-slate-400">Pengalaman Magang</div>
+                    </div>
+                    
+                    <!-- Stat Card 2 -->
+                    <div class="bg-slate-50 dark:bg-navy-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-700 hover:shadow-lg transition duration-300 group">
+                        <i class="fas fa-users text-3xl text-navy-500 dark:text-gold-400 mb-4 group-hover:scale-110 transition"></i>
+                        <div class="text-3xl font-bold text-slate-900 dark:text-white mb-1"><span class="counter" data-target="1">0</span></div>
+                        <div class="text-sm text-slate-500 dark:text-slate-400">Periode Ketua Organisasi</div>
+                    </div>
+
+                    <!-- Stat Card 3 -->
+                    <div class="bg-slate-50 dark:bg-navy-800 p-6 rounded-2xl border border-slate-100 dark:border-slate-700 hover:shadow-lg transition duration-300 group">
+                        <i class="fas fa-file-contract text-3xl text-navy-500 dark:text-gold-400 mb-4 group-hover:scale-110 transition"></i>
+                        <div class="text-3xl font-bold text-slate-900 dark:text-white mb-1"><span class="counter" data-target="50">0</span>+</div>
+                        <div class="text-sm text-slate-500 dark:text-slate-400">Dokumen Hukum Direview</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-sm font-bold text-gold-500 tracking-wider uppercase mb-2">Perjalanan Karier</h2>
+                <h3 class="text-3xl md:text-4xl font-heading font-bold text-slate-900 dark:text-white">Experience</h3>
+                <div class="w-20 h-1 bg-navy-800 dark:bg-gold-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="relative timeline-line">
+                <!-- Experience Item 1 -->
+                <div class="relative flex flex-col md:flex-row items-start mb-12 group reveal">
+                    <div class="hidden md:flex w-1/2 justify-end pr-8 pt-1 text-right">
+                        <div>
+                            <h4 class="font-bold text-slate-800 dark:text-white">Admin Legal (Intern)</h4>
+                            <p class="text-gold-600 dark:text-gold-400 font-medium">Menjadi Pengaruh</p>
+                            <span class="inline-block mt-1 px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-semibold rounded-full text-slate-600 dark:text-slate-400">Juli 2026 - Sekarang</span>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 flex items-center justify-center w-8 h-8 bg-white dark:bg-navy-900 border-4 border-navy-500 dark:border-gold-500 rounded-full z-10 mt-1 transition-all group-hover:scale-125 group-hover:bg-navy-500 dark:group-hover:bg-gold-500"></div>
+                    
+                    <div class="pl-12 md:pl-8 md:w-1/2">
+                        <div class="md:hidden mb-4">
+                            <h4 class="font-bold text-slate-800 dark:text-white text-lg">Admin Legal (Intern)</h4>
+                            <p class="text-gold-600 dark:text-gold-400 font-medium">Menjadi Pengaruh</p>
+                            <span class="inline-block mt-1 px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-semibold rounded-full text-slate-600 dark:text-slate-400">Juli 2026 - Sekarang</span>
+                        </div>
+                        <div class="bg-white dark:bg-navy-800 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 group-hover:shadow-md transition">
+                            <ul class="list-disc list-outside ml-4 space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                                <li>Membantu proses pengurusan legalitas perusahaan melalui sistem AHU, CORETAX dan OSS.</li>
+                                <li>Menyiapkan dan mengelola dokumen legal perusahaan seperti SK KEMENKUMHAM, NPWP, NIB.</li>
+                                <li>Memastikan kelengkapan administrasi dan prosedur yang berlaku.</li>
+                                <li>Membantu melakukan monitoring status pengajuan perizinan hingga proses penerbitan selesai.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Item 2 -->
+                <div class="relative flex flex-col md:flex-row items-start mb-12 group reveal">
+                    <div class="hidden md:flex w-1/2 justify-end pr-8 pt-1 md:order-2 text-left pl-8 md:pl-8 md:pr-0">
+                        <div class="bg-white dark:bg-navy-800 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 group-hover:shadow-md transition w-full">
+                            <ul class="list-disc list-outside ml-4 space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                                <li>Menganalisis BAP dan membantu penyusunan surat dakwaan.</li>
+                                <li>Mengamati serta menganalisis jalannya persidangan pidana.</li>
+                                <li>Mempelajari proses penyerahan tersangka dan barang bukti dari kepolisian kepada kejaksaan (Tahap II).</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 flex items-center justify-center w-8 h-8 bg-white dark:bg-navy-900 border-4 border-slate-300 dark:border-slate-600 rounded-full z-10 mt-1 transition-all group-hover:scale-125 group-hover:border-navy-500 dark:group-hover:border-gold-500"></div>
+                    
+                    <div class="pl-12 md:pl-0 md:pr-8 md:w-1/2 md:order-1 text-left md:text-right">
+                        <div class="mb-4 md:mb-0">
+                            <h4 class="font-bold text-slate-800 dark:text-white text-lg">Magang</h4>
+                            <p class="text-gold-600 dark:text-gold-400 font-medium">Kejaksaan Negeri Jember</p>
+                            <span class="inline-block mt-1 px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-semibold rounded-full text-slate-600 dark:text-slate-400">Desember 2025 - Januari 2026</span>
+                        </div>
+                        <!-- Mobile content view -->
+                        <div class="md:hidden mt-4 bg-white dark:bg-navy-800 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700">
+                            <ul class="list-disc list-outside ml-4 space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                                <li>Menganalisis BAP dan membantu penyusunan surat dakwaan.</li>
+                                <li>Mengamati serta menganalisis jalannya persidangan pidana.</li>
+                                <li>Mempelajari proses penyerahan tersangka dan barang bukti (Tahap II).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Item 3 -->
+                <div class="relative flex flex-col md:flex-row items-start mb-12 group reveal">
+                    <div class="hidden md:flex w-1/2 justify-end pr-8 pt-1 text-right">
+                        <div>
+                            <h4 class="font-bold text-slate-800 dark:text-white">Magang Advokat</h4>
+                            <p class="text-gold-600 dark:text-gold-400 font-medium">Kantor Advokat (Kaliwates)</p>
+                            <span class="inline-block mt-1 px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-semibold rounded-full text-slate-600 dark:text-slate-400">September 2024 - Oktober 2024</span>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 flex items-center justify-center w-8 h-8 bg-white dark:bg-navy-900 border-4 border-slate-300 dark:border-slate-600 rounded-full z-10 mt-1 transition-all group-hover:scale-125 group-hover:border-navy-500 dark:group-hover:border-gold-500"></div>
+                    
+                    <div class="pl-12 md:pl-8 md:w-1/2">
+                        <div class="md:hidden mb-4">
+                            <h4 class="font-bold text-slate-800 dark:text-white text-lg">Magang Advokat</h4>
+                            <p class="text-gold-600 dark:text-gold-400 font-medium">Kantor Advokat (Kaliwates)</p>
+                            <span class="inline-block mt-1 px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-semibold rounded-full text-slate-600 dark:text-slate-400">Sept 2024 - Okt 2024</span>
+                        </div>
+                        <div class="bg-white dark:bg-navy-800 p-6 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 group-hover:shadow-md transition">
+                            <ul class="list-disc list-outside ml-4 space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                                <li>Menyusun surat kuasa dan surat gugatan cerai.</li>
+                                <li>Melakukan wawancara awal dengan klien untuk pengumpulan data dan fakta hukum.</li>
+                                <li>Membantu administrasi dan pengelolaan dokumen perkara.</li>
+                                <li>Mempelajari proses penanganan perkara dan konsultasi hukum.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Organization Item -->
+                <div class="relative flex flex-col md:flex-row items-start group reveal">
+                    <div class="hidden md:flex w-1/2 justify-end pr-8 pt-1 md:order-2 text-left pl-8 md:pl-8 md:pr-0">
+                        <div class="bg-slate-50 dark:bg-navy-800 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700 group-hover:shadow-md transition w-full">
+                            <ul class="list-disc list-outside ml-4 space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                                <li>Menjadi perwakilan resmi UKM dalam forum kemahasiswaan dan kegiatan kampus.</li>
+                                <li>Mengelola administrasi organisasi, surat-menyurat, laporan kegiatan.</li>
+                                <li>Mengorganisir dan mengawasi pelaksanaan event internal maupun eksternal.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 flex items-center justify-center w-8 h-8 bg-slate-100 dark:bg-slate-800 border-4 border-slate-300 dark:border-slate-600 rounded-full z-10 mt-1 transition-all group-hover:scale-125 group-hover:border-navy-500 dark:group-hover:border-gold-500">
+                        <i class="fas fa-users text-xs text-slate-400"></i>
+                    </div>
+                    
+                    <div class="pl-12 md:pl-0 md:pr-8 md:w-1/2 md:order-1 text-left md:text-right">
+                        <div class="mb-4 md:mb-0">
+                            <h4 class="font-bold text-slate-800 dark:text-white text-lg">Ketua Umum Organisasi</h4>
+                            <p class="text-slate-600 dark:text-slate-400 font-medium">UKM Unit Beladiri Mahasiswa Jember</p>
+                            <span class="inline-block mt-1 px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs font-semibold rounded-full text-slate-600 dark:text-slate-400">2024 - 2025</span>
+                        </div>
+                         <!-- Mobile content view -->
+                         <div class="md:hidden mt-4 bg-slate-50 dark:bg-navy-800 p-6 rounded-xl shadow-sm border border-slate-200 dark:border-slate-700">
+                            <ul class="list-disc list-outside ml-4 space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                                <li>Menjadi perwakilan resmi UKM dalam forum.</li>
+                                <li>Mengelola administrasi organisasi & surat-menyurat.</li>
+                                <li>Mengorganisir event internal & eksternal.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-slate-50 dark:bg-[#0a1120] border-y border-slate-100 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-sm font-bold text-gold-500 tracking-wider uppercase mb-2">Portfolio Kerja</h2>
+                <h3 class="text-3xl md:text-4xl font-heading font-bold text-slate-900 dark:text-white">Featured Projects</h3>
+                <div class="w-20 h-1 bg-navy-800 dark:bg-gold-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-white dark:bg-navy-900 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-800 group reveal">
+                    <div class="h-48 bg-navy-50 dark:bg-navy-800 flex items-center justify-center overflow-hidden relative">
+                        <i class="fas fa-building text-6xl text-navy-200 dark:text-navy-700 group-hover:scale-110 transition duration-500"></i>
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+                            <span class="text-white font-medium text-sm">Corporate Legal</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex gap-2 mb-3">
+                            <span class="px-2.5 py-1 bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-xs font-semibold rounded">AHU</span>
+                            <span class="px-2.5 py-1 bg-green-50 text-green-600 dark:bg-green-900/30 dark:text-green-400 text-xs font-semibold rounded">OSS</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Legalitas & Pendirian PT</h4>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 line-clamp-3">
+                            Pengurusan dokumen legalitas perusahaan baru melalui sistem AHU Online dan OSS untuk penerbitan NIB dan sertifikat standar.
+                        </p>
+                        <button onclick="openModal('projectModal1')" class="text-navy-600 dark:text-gold-400 font-medium text-sm hover:underline flex items-center gap-1">
+                            See Details <i class="fas fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 2 (Analisis Perkara Pidana) -->
+                <div class="bg-white dark:bg-navy-900 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-100 dark:border-slate-800 group reveal" style="transition-delay: 100ms;">
+                    <div class="h-48 bg-navy-50 dark:bg-navy-800 flex items-center justify-center overflow-hidden relative">
+                        <i class="fas fa-balance-scale text-6xl text-navy-200 dark:text-navy-700 group-hover:scale-110 transition duration-500"></i>
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900/80 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-4">
+                            <span class="text-white font-medium text-sm">Criminal Law</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex gap-2 mb-3">
+                            <span class="px-2.5 py-1 bg-red-50 text-red-600 dark:bg-red-900/30 dark:text-red-400 text-xs font-semibold rounded">BAP</span>
+                            <span class="px-2.5 py-1 bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300 text-xs font-semibold rounded">Dakwaan</span>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-900 dark:text-white mb-2">Analisis Perkara Pidana</h4>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 line-clamp-3">
+                            Analisis Berita Acara Pemeriksaan (BAP) dan pendampingan dalam penyusunan surat dakwaan pada Kejaksaan Negeri.
+                        </p>
+                        <button class="text-navy-600 dark:text-gold-400 font-medium text-sm hover:underline flex items-center gap-1">
+                            See Details <i class="fas fa-arrow-right text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Template for Projects -->
+    <div id="projectModal1" class="fixed inset-0 z-[100] hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+        <div class="bg-white dark:bg-navy-900 rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300 shadow-2xl relative border border-slate-200 dark:border-slate-700">
+            <button onclick="closeModal('projectModal1')" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-800 dark:hover:text-white transition">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="p-8">
+                <div class="flex gap-2 mb-4">
+                    <span class="px-3 py-1 bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 text-sm font-semibold rounded-full">AHU Online</span>
+                    <span class="px-3 py-1 bg-green-50 text-green-600 dark:bg-green-900/30 dark:text-green-400 text-sm font-semibold rounded-full">OSS RBA</span>
+                </div>
+                <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Pengurusan Legalitas & Pendirian PT</h3>
+                <div class="aspect-video bg-slate-100 dark:bg-navy-800 rounded-xl mb-6 flex items-center justify-center">
+                    <i class="fas fa-file-invoice text-5xl text-slate-300 dark:text-slate-600"></i>
+                </div>
+                <div class="space-y-4 text-slate-600 dark:text-slate-300">
+                    <p><strong>Deskripsi:</strong> Proyek ini melibatkan pengurusan pendirian Perseroan Terbatas (PT) mulai dari pendaftaran nama, pengesahan badan hukum di AHU Online, hingga penerbitan Nomor Induk Berusaha (NIB) melalui sistem OSS RBA.</p>
+                    <p><strong>Tanggung Jawab:</strong></p>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Pengumpulan dan verifikasi data identitas pendiri dan pengurus.</li>
+                        <li>Input data sistem AHU Kementerian Hukum dan HAM.</li>
+                        <li>Pengurusan perpajakan dasar (NPWP Badan) via Coretax/DJP Online.</li>
+                        <li>Pemrosesan perizinan berusaha berbasis risiko (OSS).</li>
+                    </ul>
+                    <p><strong>Hasil:</strong> Menerbitkan dokumen legal lengkap secara tepat waktu, memastikan perusahaan siap beroperasi sesuai regulasi yang berlaku.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-sm font-bold text-gold-500 tracking-wider uppercase mb-2">Kompetensi</h2>
+                <h3 class="text-3xl md:text-4xl font-heading font-bold text-slate-900 dark:text-white">Professional Skills</h3>
+                <div class="w-20 h-1 bg-navy-800 dark:bg-gold-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Legal Skills -->
+                <div class="bg-white dark:bg-navy-900 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 reveal">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-lg bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 dark:text-blue-400">
+                            <i class="fas fa-gavel text-xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-900 dark:text-white">Legal Knowledge</h4>
+                    </div>
+                    
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-5 leading-relaxed">
+                        Memiliki pemahaman dasar dan ketertarikan untuk terus belajar dalam bidang:
+                    </p>
+                    
+                    <div class="space-y-3">
+                        <!-- Skill Item 1 -->
+                        <div class="flex items-start gap-3 p-3 rounded-xl bg-blue-50/50 dark:bg-navy-800 border border-transparent hover:border-blue-100 dark:hover:border-slate-700 transition">
+                            <i class="fas fa-folder-open text-blue-500 mt-1"></i>
+                            <div>
+                                <h5 class="text-sm font-semibold text-slate-800 dark:text-white">Administrasi Legal</h5>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Pemahaman prosedur perizinan & legalitas badan usaha.</p>
+                            </div>
+                        </div>
+                        <!-- Skill Item 2 -->
+                        <div class="flex items-start gap-3 p-3 rounded-xl bg-blue-50/50 dark:bg-navy-800 border border-transparent hover:border-blue-100 dark:hover:border-slate-700 transition">
+                            <i class="fas fa-pen-nib text-blue-500 mt-1"></i>
+                            <div>
+                                <h5 class="text-sm font-semibold text-slate-800 dark:text-white">Dasar Legal Drafting</h5>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Pengalaman menyusun surat kuasa & gugatan sederhana.</p>
+                            </div>
+                        </div>
+                        <!-- Skill Item 3 -->
+                        <div class="flex items-start gap-3 p-3 rounded-xl bg-blue-50/50 dark:bg-navy-800 border border-transparent hover:border-blue-100 dark:hover:border-slate-700 transition">
+                            <i class="fas fa-search text-blue-500 mt-1"></i>
+                            <div>
+                                <h5 class="text-sm font-semibold text-slate-800 dark:text-white">Analisis Dokumen</h5>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Latihan mereview kontrak dasar dan menganalisis BAP.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Skills -->
+                <div class="bg-white dark:bg-navy-900 p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800 reveal" style="transition-delay: 100ms;">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 rounded-lg bg-green-50 dark:bg-green-900/20 flex items-center justify-center text-green-600 dark:text-green-400">
+                            <i class="fas fa-laptop-code text-xl"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-slate-900 dark:text-white">Technical Tools</h4>
+                    </div>
+                    
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mb-5 leading-relaxed">
+                        Familiar dan terbiasa mengoperasikan sistem serta aplikasi pendukung kerja:
+                    </p>
+
+                    <div class="flex flex-wrap gap-2.5">
+                        <span class="px-3 py-2 bg-slate-50 dark:bg-navy-800 text-slate-700 dark:text-slate-300 text-sm font-medium rounded-lg border border-slate-200 dark:border-slate-700 flex items-center gap-2 hover:bg-green-50 dark:hover:bg-green-900/20 transition cursor-default">
+                            <i class="fas fa-globe text-green-600 dark:text-green-400"></i> OSS RBA
+                        </span>
+                        <span class="px-3 py-2 bg-slate-50 dark:bg-navy-800 text-slate-700 dark:text-slate-300 text-sm font-medium rounded-lg border border-slate-200 dark:border-slate-700 flex items-center gap-2 hover:bg-green-50 dark:hover:bg-green-900/20 transition cursor-default">
+                            <i class="fas fa-landmark text-green-600 dark:text-green-400"></i> AHU Online
+                        </span>
+                        <span class="px-3 py-2 bg-slate-50 dark:bg-navy-800 text-slate-700 dark:text-slate-300 text-sm font-medium rounded-lg border border-slate-200 dark:border-slate-700 flex items-center gap-2 hover:bg-green-50 dark:hover:bg-green-900/20 transition cursor-default">
+                            <i class="fas fa-calculator text-green-600 dark:text-green-400"></i> Coretax (Dasar)
+                        </span>
+                        
+                        <div class="w-full h-px bg-slate-100 dark:bg-slate-800 my-1"></div>
+                        
+                        <span class="px-3 py-2 bg-slate-50 dark:bg-navy-800 text-slate-700 dark:text-slate-300 text-sm font-medium rounded-lg border border-slate-200 dark:border-slate-700 flex items-center gap-2 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition cursor-default">
+                            <i class="fas fa-file-word text-blue-600 dark:text-blue-400"></i> Microsoft Office
+                        </span>
+                        <span class="px-3 py-2 bg-slate-50 dark:bg-navy-800 text-slate-700 dark:text-slate-300 text-sm font-medium rounded-lg border border-slate-200 dark:border-slate-700 flex items-center gap-2 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition cursor-default">
+                            <i class="fab fa-google text-blue-600 dark:text-blue-400"></i> Google Workspace
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-slate-50 dark:bg-[#0a1120] border-y border-slate-100 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-sm font-bold text-gold-500 tracking-wider uppercase mb-2">Dokumentasi</h2>
+                <h3 class="text-3xl md:text-4xl font-heading font-bold text-slate-900 dark:text-white">Activity Gallery</h3>
+                <div class="w-20 h-1 bg-navy-800 dark:bg-gold-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- CSS Grid for masonry-like feel -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                
+                <!-- Image 1: Menjadi Pengaruh -->
+                <div class="relative group rounded-xl overflow-hidden shadow-sm lg:col-span-2 lg:row-span-2 cursor-pointer reveal" onclick="openImageModal('gallery1')">
+                    <img id="gallery1" src="IMG-20260711-WA0018.jpg" alt="Tim Menjadi Pengaruh" class="w-full h-full object-cover aspect-[4/3] lg:aspect-auto transition-transform duration-700 group-hover:scale-105" onerror="this.src='https://placehold.co/800x600/102a43/ffffff?text=Tim+Menjadi+Pengaruh'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900/90 via-navy-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h4 class="text-white font-bold text-lg">Tim Menjadi Pengaruh</h4>
+                        <p class="text-slate-300 text-sm">Magang Admin Legal</p>
+                    </div>
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <i class="fas fa-search-plus text-white text-xl"></i>
+                    </div>
+                </div>
+
+                <!-- Image 2: Kejaksaan -->
+                <div class="relative group rounded-xl overflow-hidden shadow-sm cursor-pointer reveal" style="transition-delay: 100ms;" onclick="openImageModal('gallery2')">
+                    <img id="gallery2" src="IMG-20251222-WA0004.jpg" alt="Kejaksaan Negeri" class="w-full h-full object-cover aspect-square transition-transform duration-700 group-hover:scale-105" onerror="this.src='https://placehold.co/400x400/102a43/ffffff?text=Kejaksaan+Negeri'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <h4 class="text-white font-bold text-sm">Kejaksaan Negeri</h4>
+                        <p class="text-slate-300 text-xs">Apel / Kegiatan Resmi</p>
+                    </div>
+                </div>
+
+                <!-- Image 3: Lulus / Organisasi -->
+                <div class="relative group rounded-xl overflow-hidden shadow-sm cursor-pointer reveal" style="transition-delay: 200ms;" onclick="openImageModal('gallery3')">
+                    <img id="gallery3" src="IMG-20251001-WA0030.jpg" alt="Kegiatan Kampus" class="w-full h-full object-cover aspect-square transition-transform duration-700 group-hover:scale-105" onerror="this.src='https://placehold.co/400x400/102a43/ffffff?text=Kegiatan+Kampus'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <h4 class="text-white font-bold text-sm">Organisasi Kampus</h4>
+                        <p class="text-slate-300 text-xs">Bersama Rekan Mahasiswa</p>
+                    </div>
+                </div>
+
+                <!-- Image 4: UKM Beladiri -->
+                <div class="relative group rounded-xl overflow-hidden shadow-sm sm:col-span-2 cursor-pointer reveal" style="transition-delay: 300ms;" onclick="openImageModal('gallery4')">
+                    <img id="gallery4" src="IMG-20250126-WA0068.jpg" alt="UKM Beladiri" class="w-full h-48 object-cover transition-transform duration-700 group-hover:scale-105" onerror="this.src='https://placehold.co/800x400/102a43/ffffff?text=UKM+Beladiri'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-navy-900/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                        <h4 class="text-white font-bold">UKM Beladiri Mahasiswa</h4>
+                        <p class="text-slate-300 text-xs">Sebagai Ketua Umum</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Full Image Modal -->
+    <div id="imageModal" class="fixed inset-0 z-[110] hidden bg-black/90 flex justify-center items-center opacity-0 transition-opacity duration-300">
+        <button onclick="closeImageModal()" class="absolute top-6 right-6 text-white hover:text-gold-500 text-3xl focus:outline-none z-50">
+            <i class="fas fa-times"></i>
+        </button>
+        <img id="modalImageSrc" src="" alt="Full Screen Image" class="max-w-[90vw] max-h-[90vh] object-contain rounded-lg shadow-2xl transform scale-95 transition-transform duration-300">
+    </div>
+
+    <!-- Contact & Social Section -->
+    <section id="contact" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-sm font-bold text-gold-500 tracking-wider uppercase mb-2">Mari Terhubung</h2>
+                <h3 class="text-3xl md:text-4xl font-heading font-bold text-slate-900 dark:text-white">Contact & Connect</h3>
+                <div class="w-20 h-1 bg-navy-800 dark:bg-gold-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-12">
+                <!-- Contact Info & Socials -->
+                <div class="lg:col-span-2 space-y-8 reveal">
+                    <div>
+                        <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-4">Let's Discuss Opportunities</h4>
+                        <p class="text-slate-600 dark:text-slate-400 mb-6">
+                            Tertarik untuk bekerja sama, memiliki pertanyaan, atau sekadar ingin menyapa? Silakan hubungi saya melalui form atau kontak di bawah ini.
+                        </p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <a href="mailto:zulkarnainfikri742@gmail.com" class="flex items-center gap-4 p-4 rounded-xl hover:bg-slate-50 dark:hover:bg-navy-800 transition border border-transparent hover:border-slate-100 dark:hover:border-slate-700 group">
+                            <div class="w-12 h-12 bg-red-50 dark:bg-red-900/20 text-red-500 rounded-full flex items-center justify-center group-hover:scale-110 transition">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-slate-500 dark:text-slate-400">Email</p>
+                                <p class="font-medium text-slate-900 dark:text-white">zulkarnainfikri742@gmail.com</p>
+                            </div>
+                        </a>
+                        
+                        <a href="https://wa.me/6281336809975" target="_blank" class="flex items-center gap-4 p-4 rounded-xl hover:bg-slate-50 dark:hover:bg-navy-800 transition border border-transparent hover:border-slate-100 dark:hover:border-slate-700 group">
+                            <div class="w-12 h-12 bg-green-50 dark:bg-green-900/20 text-green-500 rounded-full flex items-center justify-center group-hover:scale-110 transition">
+                                <i class="fab fa-whatsapp text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-slate-500 dark:text-slate-400">WhatsApp</p>
+                                <p class="font-medium text-slate-900 dark:text-white">+62 813-3680-9975</p>
+                            </div>
+                        </a>
+
+                        <div class="flex items-center gap-4 p-4 rounded-xl border border-transparent">
+                            <div class="w-12 h-12 bg-navy-50 dark:bg-navy-800 text-navy-500 dark:text-navy-300 rounded-full flex items-center justify-center">
+                                <i class="fas fa-map-marker-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-slate-500 dark:text-slate-400">Location</p>
+                                <p class="font-medium text-slate-900 dark:text-white">Banyuwangi / Jember, Indonesia</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Social Media Links -->
+                    <div class="pt-6 border-t border-slate-200 dark:border-slate-700">
+                        <p class="font-medium text-slate-700 dark:text-slate-300 mb-4">Connect with me</p>
+                        <div class="flex gap-4">
+                            <a href="https://www.linkedin.com/in/m-zulkarnain-fikri" target="_blank" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-navy-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-[#0A66C2] hover:text-white transition-colors">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" target="_blank" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-navy-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-slate-900 hover:text-white transition-colors">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" target="_blank" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-navy-800 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:bg-pink-600 hover:text-white transition-colors">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="lg:col-span-3 reveal" style="transition-delay: 200ms;">
+                    <div class="bg-white dark:bg-navy-900 p-8 rounded-2xl shadow-lg border border-slate-100 dark:border-slate-800">
+                        <form id="contactForm" onsubmit="submitForm(event)" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Nama Lengkap</label>
+                                    <input type="text" id="name" required class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-navy-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-gold-500 focus:border-transparent outline-none transition">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Email</label>
+                                    <input type="email" id="email" required class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-navy-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-gold-500 focus:border-transparent outline-none transition">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="subject" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Subjek</label>
+                                <input type="text" id="subject" required class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-navy-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-gold-500 focus:border-transparent outline-none transition">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Pesan</label>
+                                <textarea id="message" rows="5" required class="w-full px-4 py-3 rounded-lg border border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-navy-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-gold-500 focus:border-transparent outline-none transition resize-none"></textarea>
+                            </div>
+                            <button type="submit" class="w-full ripple bg-navy-800 hover:bg-navy-900 dark:bg-gold-500 dark:hover:bg-gold-600 text-white dark:text-navy-900 font-bold py-4 rounded-lg transition shadow-md flex justify-center items-center gap-2">
+                                <span>Kirim Pesan</span>
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                        <!-- Form Success Message -->
+                        <div id="formSuccess" class="hidden mt-4 p-4 bg-green-50 text-green-700 rounded-lg text-center text-sm font-medium">
+                            Pesan Anda berhasil dikirim! Saya akan segera merespons.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 py-12 border-t border-slate-800 text-slate-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <a href="#" class="font-heading font-bold text-2xl tracking-tighter text-white mb-2 block">
+                    MZF<span class="text-gold-500">.</span>
+                </a>
+                <p class="text-sm">© 2026 Muhammad Zulkarnain Fikri. All rights reserved.</p>
+            </div>
+            
+            <div class="flex space-x-6">
+                <a href="#home" class="hover:text-white transition">Home</a>
+                <a href="#about" class="hover:text-white transition">About</a>
+                <a href="#experience" class="hover:text-white transition">Experience</a>
+                <a href="#projects" class="hover:text-white transition">Projects</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Buttons -->
+    <!-- Back to top -->
+    <button id="backToTop" class="fixed bottom-6 right-6 w-12 h-12 bg-navy-800 text-white rounded-full shadow-xl flex items-center justify-center transform translate-y-20 opacity-0 transition-all duration-300 z-40 hover:bg-gold-500 focus:outline-none">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Floating WhatsApp -->
+    <a href="https://wa.me/6281336809975" target="_blank" class="fixed bottom-24 right-6 w-12 h-12 bg-[#25D366] text-white rounded-full shadow-xl flex items-center justify-center transition-transform hover:scale-110 z-40 animate-bounce" style="animation-duration: 2s;">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <script>
+        // --- 1. Loader & Initialization ---
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('loader');
+            loader.style.opacity = '0';
+            setTimeout(() => {
+                loader.style.display = 'none';
+                initTypewriter();
+                initReveal();
+                initCounters();
+            }, 500);
+        });
+
+        // --- 2. Dark Mode Toggle ---
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        const themeIconMobile = document.getElementById('theme-icon-mobile');
+
+        // Check local storage or system preference
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            setIcons('moon');
+        } else {
+            document.documentElement.classList.remove('dark');
+            setIcons('sun');
+        }
+
+        function setIcons(mode) {
+            const iconClass = mode === 'dark' ? 'fa-sun' : 'fa-moon';
+            const removeClass = mode === 'dark' ? 'fa-moon' : 'fa-sun';
+            
+            themeIcon.classList.remove(removeClass);
+            themeIcon.classList.add(iconClass);
+            
+            themeIconMobile.classList.remove(removeClass);
+            themeIconMobile.classList.add(iconClass);
+        }
+
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+                setIcons('sun');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+                setIcons('dark');
+            }
+        }
+
+        themeToggleBtn.addEventListener('click', toggleTheme);
+        themeToggleMobile.addEventListener('click', toggleTheme);
+
+        // --- 3. Mobile Menu Toggle ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileMenuBtn.querySelector('i');
+            if(mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuBtn.querySelector('i').classList.replace('fa-times', 'fa-bars');
+            });
+        });
+
+        // --- 4. Navbar Sticky, Active State & Scroll Progress ---
+        const navbar = document.getElementById('navbar');
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const progressBar = document.getElementById('scroll-progress');
+        const backToTopBtn = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const scrollY = window.scrollY;
+            
+            // Scroll Progress
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            progressBar.style.width = scrolled + "%";
+
+            // Navbar style
+            if (scrollY > 50) {
+                navbar.classList.add('bg-white/90', 'dark:bg-navy-900/90', 'backdrop-blur-md', 'shadow-sm');
+            } else {
+                navbar.classList.remove('bg-white/90', 'dark:bg-navy-900/90', 'shadow-sm');
+            }
+
+            // Back to Top button
+            if (scrollY > 500) {
+                backToTopBtn.classList.remove('translate-y-20', 'opacity-0');
+            } else {
+                backToTopBtn.classList.add('translate-y-20', 'opacity-0');
+            }
+
+            // Active Menu
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('text-gold-500', 'dark:text-gold-400');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('text-gold-500', 'dark:text-gold-400');
+                }
+            });
+            
+            // Check reveal elements on scroll
+            initReveal();
+            // Check counter elements
+            initCounters();
+        });
+
+        // Back to top action
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // --- 5. Typewriter Effect ---
+        function initTypewriter() {
+            const textElement = document.getElementById('typewriter-text');
+            const words = ["Legal Administrator.", "Corporate Legal Staff.", "Hukum Pidana Islam S.H."];
+            let wordIndex = 0;
+            let charIndex = 0;
+            let isDeleting = false;
+            let typingSpeed = 100;
+
+            function type() {
+                const currentWord = words[wordIndex];
+                
+                if (isDeleting) {
+                    textElement.innerText = currentWord.substring(0, charIndex - 1);
+                    charIndex--;
+                    typingSpeed = 50;
+                } else {
+                    textElement.innerText = currentWord.substring(0, charIndex + 1);
+                    charIndex++;
+                    typingSpeed = 100;
+                }
+
+                // Add cursor
+                textElement.innerHTML += '<span class="border-r-2 border-gold-500 ml-1 animate-pulse">&nbsp;</span>';
+
+                if (!isDeleting && charIndex === currentWord.length) {
+                    isDeleting = true;
+                    typingSpeed = 1500; // Pause at end of word
+                } else if (isDeleting && charIndex === 0) {
+                    isDeleting = false;
+                    wordIndex = (wordIndex + 1) % words.length;
+                    typingSpeed = 500; // Pause before new word
+                }
+
+                setTimeout(type, typingSpeed);
+            }
+            
+            setTimeout(type, 1000); // Start delay
+        }
+
+        // --- 6. Scroll Reveal Animation ---
+        function initReveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            const windowHeight = window.innerHeight;
+            
+            reveals.forEach(reveal => {
+                const elementTop = reveal.getBoundingClientRect().top;
+                const elementVisible = 100; // threshold
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveal.classList.add('active');
+                }
+            });
+        }
+
+        // --- 7. Counter Animation ---
+        let countersStarted = false;
+        function initCounters() {
+            if(countersStarted) return;
+            
+            const statsSection = document.getElementById('about');
+            const position = statsSection.getBoundingClientRect().top;
+            
+            if(position < window.innerHeight - 100) {
+                countersStarted = true;
+                const counters = document.querySelectorAll('.counter');
+                const speed = 200; // lower is slower
+                
+                counters.forEach(counter => {
+                    const updateCount = () => {
+                        const target = +counter.getAttribute('data-target');
+                        const count = +counter.innerText;
+                        const inc = target / speed;
+                        
+                        if (count < target) {
+                            counter.innerText = Math.ceil(count + inc);
+                            setTimeout(updateCount, 20);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    updateCount();
+                });
+            }
+        }
+
+        // --- 8. Modals (Projects & Images) ---
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.remove('hidden');
+            // Trigger reflow for transition
+            void modal.offsetWidth;
+            modal.classList.remove('opacity-0');
+            modal.querySelector('div').classList.remove('scale-95');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.add('opacity-0');
+            modal.querySelector('div').classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        // Image Gallery Modal
+        function openImageModal(imgId) {
+            const imgSrc = document.getElementById(imgId).src;
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImageSrc');
+            
+            modalImg.src = imgSrc;
+            modal.classList.remove('hidden');
+            void modal.offsetWidth;
+            modal.classList.remove('opacity-0');
+            modalImg.classList.remove('scale-95');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImageSrc');
+            
+            modal.classList.add('opacity-0');
+            modalImg.classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        // Close modals on clicking outside
+        document.addEventListener('click', (e) => {
+            const projectModal = document.getElementById('projectModal1');
+            const imgModal = document.getElementById('imageModal');
+            
+            if (e.target === projectModal) closeModal('projectModal1');
+            if (e.target === imgModal) closeImageModal();
+        });
+
+        // --- 9. Dummy Form Submission ---
+        function submitForm(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
+            btn.disabled = true;
+            
+            // Simulate network request
+            setTimeout(() => {
+                e.target.reset();
+                document.getElementById('formSuccess').classList.remove('hidden');
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                
+                setTimeout(() => {
+                    document.getElementById('formSuccess').classList.add('hidden');
+                }, 5000);
+            }, 1500);
+        }
+
+        // --- 10. Download CV Action ---
+        function downloadCV(e) {
+            e.preventDefault();
+            // In a real scenario, change the href to point to the actual PDF file
+            const cvUrl = 'CV ATS MUHAMMAD ZULKARNAIN FIKRI.pdf';
+            
+            // Create a temporary link to trigger download
+            const link = document.createElement('a');
+            link.href = cvUrl;
+            link.download = 'CV_Muhammad_Zulkarnain_Fikri.pdf'; // Name of file to download
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Optional: Show a quick toast notification (simplified version)
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-navy-800 text-white px-4 py-2 rounded-lg shadow-lg z-50 text-sm';
+            toast.innerHTML = '<i class="fas fa-check-circle text-green-400 mr-2"></i> CV Download Started';
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transition = 'opacity 0.5s ease';
+                setTimeout(() => toast.remove(), 500);
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
